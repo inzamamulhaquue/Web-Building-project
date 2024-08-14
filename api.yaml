@@ -1,0 +1,2705 @@
+swagger: '2.0'
+info:
+  title: Brant Ford India
+  description: Welcome to the world of Commercial and Residential Research Real Estate Insights.
+  version: 1.0 
+servers:
+  - url: http://localhost:3001/
+    description:  Local server 
+  - url: http://15.206.133.34:3002/
+    description:  Pre Production server
+  - url: http://15.206.133.34:3002/
+    description:  Production server
+
+host: localhost:3001
+basePath: /v1
+securityDefinitions: {}
+schemes:
+- http
+consumes:
+- application/json
+produces:
+- application/json
+paths:
+  /profile:
+    get:
+      summary: User Profile
+      tags:
+      - User
+      operationId: UserProfile
+      deprecated: false
+      produces:
+      - application/json; charset=utf-8
+      parameters:
+      - name: x-auth-token
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/UserProfile'
+          examples:
+            application/json; charset=utf-8:
+              msg: Request Success
+              data:
+              - name: test
+                type: user
+                profilePicture: null
+                userId: 6405ade002f490fe8f52287c
+                userName: null
+                emailId: cejino@gmail.com
+                secondaryEmailId: null
+                registrationType: Email
+          headers:
+            X-Powered-By:
+              type: string
+              default: Express
+            Content-Length:
+              type: string
+              default: '218'
+            ETag:
+              type: string
+              default: W/"da-MD9aYr8bpZvNDkrJdDK49iZpwA8"
+            Date:
+              type: string
+              default: Mon, 06 Mar 2023 10:21:58 GMT
+            Connection:
+              type: string
+              default: keep-alive
+            Keep-Alive:
+              type: string
+              default: timeout=5
+    patch:
+      summary: Update Profile
+      tags:
+      - User
+      operationId: UpdateProfile
+      deprecated: false
+      produces:
+      - application/json; charset=utf-8
+      parameters:
+      - name: x-auth-token
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/UpdateProfileRequest'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/UserProfile'
+          examples:
+            application/json; charset=utf-8:
+              msg: Request Success
+              data:
+              - name: test
+                type: user
+                profilePicture: null
+                userId: 6405ade002f490fe8f52287c
+                userName: null
+                emailId: cejino@gmail.com
+                secondaryEmailId: null
+                registrationType: Email
+          headers:
+            X-Powered-By:
+              type: string
+              default: Express
+            Content-Length:
+              type: string
+              default: '218'
+            ETag:
+              type: string
+              default: W/"da-MD9aYr8bpZvNDkrJdDK49iZpwA8"
+            Date:
+              type: string
+              default: Mon, 06 Mar 2023 10:21:58 GMT
+            Connection:
+              type: string
+              default: keep-alive
+            Keep-Alive:
+              type: string
+              default: timeout=5
+  /wallet-transaction:
+    get:
+      summary: Wallet Tran.
+      tags:
+      - User
+      operationId: WalletTran.
+      deprecated: false
+      produces:
+      - application/json; charset=utf-8
+      parameters:
+      - name: limit
+        in: query
+        required: true
+        type: integer
+        format: int32
+        description: ''
+      - name: offset
+        in: query
+        required: true
+        type: integer
+        format: int32
+        description: ''
+      - name: sortBy
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: x-auth-token
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/UserProfile'
+          examples:
+            application/json; charset=utf-8:
+              msg: Request Success
+              data:
+              - name: test
+                type: user
+                profilePicture: null
+                userId: 6405ade002f490fe8f52287c
+                userName: null
+                emailId: cejino@gmail.com
+                secondaryEmailId: null
+                registrationType: Email
+          headers:
+            X-Powered-By:
+              type: string
+              default: Express
+            Content-Length:
+              type: string
+              default: '218'
+            ETag:
+              type: string
+              default: W/"da-MD9aYr8bpZvNDkrJdDK49iZpwA8"
+            Date:
+              type: string
+              default: Mon, 06 Mar 2023 10:21:58 GMT
+            Connection:
+              type: string
+              default: keep-alive
+            Keep-Alive:
+              type: string
+              default: timeout=5
+  /login:
+    post:
+      summary: Login
+      tags:
+      - Authentication
+      operationId: Login
+      deprecated: false
+      produces:
+      - application/json; charset=utf-8
+      parameters:
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/LoginRequest'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Login'
+          examples:
+            application/json; charset=utf-8:
+              msg: Successfully logged in.
+              data:
+                accessToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJNZXRhIiwiYXVkIjoiTWV0YSIsInVzZXJJZCI6IjYzZmRhZjhmZTkwMWI1YjMwMTBjOWM4ZiIsIm5hbWUiOiJ0ZXN0IiwidHlwZSI6IkFjY2VzcyIsImp0aSI6IjQ1NzdiNjgzNTlmODg4ZDgwYzdkIiwiaWF0IjoxNjc3NTgzMjUzLCJleHAiOjE2Nzc3NTYwNTN9.BRCm0sE0IvcpQzTmJA9GBpVAEZII48ofOBXjhSjsn6k
+                refreshToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJNZXRhIiwiYXVkIjoiTWV0YSIsInVzZXJJZCI6IjYzZmRhZjhmZTkwMWI1YjMwMTBjOWM4ZiIsIm5hbWUiOiJ0ZXN0IiwidHlwZSI6IlJlZnJlc2giLCJqdGkiOiJlNDBjNmZjNWE3YmFjZjU2NGE5NCIsImlhdCI6MTY3NzU4MzI1MywiZXhwIjoxNjc3NjY5NjUzfQ.hoK81QVHgvR1owowmmwx_IS_85gt9wFQ78Fxi3H-YNo
+                userData:
+                  email:
+                    verified: true
+          headers:
+            X-Powered-By:
+              type: string
+              default: Express
+            X-RateLimit-Limit:
+              type: string
+              default: '5'
+            X-RateLimit-Remaining:
+              type: string
+              default: '3'
+            Date:
+              type: string
+              default: Tue, 28 Feb 2023 11:20:53 GMT
+            X-RateLimit-Reset:
+              type: string
+              default: '1677583290'
+            Content-Length:
+              type: string
+              default: '696'
+            ETag:
+              type: string
+              default: W/"2b8-nx/l2PD63/11lGlnBLdpEijQ4OI"
+            Connection:
+              type: string
+              default: keep-alive
+            Keep-Alive:
+              type: string
+              default: timeout=5
+  /token:
+    post:
+      summary: Refresh Token
+      tags:
+      - Authentication
+      operationId: RefreshToken
+      deprecated: false
+      produces:
+      - application/json; charset=utf-8
+      parameters:
+      - name: x-auth-token
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/RefreshToken'
+          examples:
+            application/json; charset=utf-8:
+              msg: Successfully logged in.
+              data:
+                accessToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJNZXRhIiwiYXVkIjoiTWV0YSIsInVzZXJJZCI6IjYzZmRhZjhmZTkwMWI1YjMwMTBjOWM4ZiIsIm5hbWUiOiJ0ZXN0IiwidHlwZSI6IkFjY2VzcyIsImp0aSI6IjBiZjI0ZTI1NmI5ZGNkYWQwOWJkIiwiaWF0IjoxNjc3NTgzNjkyLCJleHAiOjE2Nzc3NTY0OTJ9.J8VtquAfbS9zs0yG-3sQd9bbEqBVeQ97SSXG2A9buxo
+                refreshToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJNZXRhIiwiYXVkIjoiTWV0YSIsInVzZXJJZCI6IjYzZmRhZjhmZTkwMWI1YjMwMTBjOWM4ZiIsIm5hbWUiOiJ0ZXN0IiwidHlwZSI6IlJlZnJlc2giLCJqdGkiOiI5MDc5Nzk2NDVkZDQ4MjkyZjUxZCIsImlhdCI6MTY3NzU4MzY5MiwiZXhwIjoxNjc3NjcwMDkyfQ.wKytf4N87G4WGpzCGQj2E8gY5gUt7vLjZ-BcgQ4_AWM
+          headers:
+            X-Powered-By:
+              type: string
+              default: Express
+            Content-Length:
+              type: string
+              default: '657'
+            ETag:
+              type: string
+              default: W/"291-WVFZgpBRIAOcXS6OHwgbGE06zNU"
+            Date:
+              type: string
+              default: Tue, 28 Feb 2023 11:28:12 GMT
+            Connection:
+              type: string
+              default: keep-alive
+            Keep-Alive:
+              type: string
+              default: timeout=5
+  /email-verify:
+    post:
+      summary: Email Verify
+      tags:
+      - Authentication
+      operationId: EmailVerify
+      deprecated: false
+      produces:
+      - application/json; charset=utf-8
+      parameters:
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/EmailVerifyRequest'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/EmailVerify'
+          examples:
+            application/json; charset=utf-8:
+              msg: Your account has been verified, Please login.
+              data:
+                name: test
+                email: cejino1614a@gmail.com
+          headers:
+            X-Powered-By:
+              type: string
+              default: Express
+            Content-Length:
+              type: string
+              default: '110'
+            ETag:
+              type: string
+              default: W/"6e-rBYOx7xuYnQkua5k6RMMYcXBeRo"
+            Date:
+              type: string
+              default: Tue, 28 Feb 2023 07:43:47 GMT
+            Connection:
+              type: string
+              default: keep-alive
+            Keep-Alive:
+              type: string
+              default: timeout=5
+  /forgot-password:
+    post:
+      summary: Forgot Password Send Email
+      tags:
+      - Authentication
+      operationId: ForgotPasswordSendEmail
+      deprecated: false
+      produces:
+      - application/json; charset=utf-8
+      parameters:
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/ForgotPasswordSendEmailRequest'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/ForgotPasswordSendEmail'
+          examples:
+            application/json; charset=utf-8:
+              msg: Email sent to the registered account.
+          headers:
+            X-Powered-By:
+              type: string
+              default: Express
+            Content-Length:
+              type: string
+              default: '47'
+            ETag:
+              type: string
+              default: W/"2f-pEmWZJd7Cvo4/X/tpipox9SSejw"
+            Date:
+              type: string
+              default: Tue, 28 Feb 2023 09:04:18 GMT
+            Connection:
+              type: string
+              default: keep-alive
+            Keep-Alive:
+              type: string
+              default: timeout=5
+  /reset-password:
+    post:
+      summary: Reset Password (Password Change)
+      tags:
+      - Authentication
+      operationId: ResetPassword(PasswordChange)
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/ResetPassword%28PasswordChange%29Request'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /register/email:
+    post:
+      summary: SignUp
+      tags:
+      - Authentication
+      operationId: SignUp
+      deprecated: false
+      produces:
+      - application/json; charset=utf-8
+      parameters:
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/SignUpRequest'
+      responses:
+        '201':
+          description: Created
+          schema:
+            $ref: '#/definitions/SignUp'
+          examples:
+            application/json; charset=utf-8:
+              msg: Verification Email send successfully.
+              data:
+                _id: 63fdaf8fe901b5b3010c9c8f
+                name: test
+                email: cejino1614a@gmail.com
+          headers:
+            X-Powered-By:
+              type: string
+              default: Express
+            Content-Length:
+              type: string
+              default: '135'
+            ETag:
+              type: string
+              default: W/"87-UwDL/ryBFZ9Kh5qAEfVtPB3Rw6o"
+            Date:
+              type: string
+              default: Tue, 28 Feb 2023 07:38:55 GMT
+            Connection:
+              type: string
+              default: keep-alive
+            Keep-Alive:
+              type: string
+              default: timeout=5
+  /resend-email:
+    post:
+      summary: Resend Email
+      tags:
+      - Authentication
+      operationId: ResendEmail
+      deprecated: false
+      produces:
+      - application/json; charset=utf-8
+      parameters:
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/ResendEmailRequest'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/ResendEmail'
+          examples:
+            application/json; charset=utf-8:
+              msg: Verification Email send successfully.
+          headers:
+            X-Powered-By:
+              type: string
+              default: Express
+            Content-Length:
+              type: string
+              default: '47'
+            ETag:
+              type: string
+              default: W/"2f-T37IZEbk13Ljmf37PILAaMl4rTg"
+            Date:
+              type: string
+              default: Tue, 28 Feb 2023 07:59:12 GMT
+            Connection:
+              type: string
+              default: keep-alive
+            Keep-Alive:
+              type: string
+              default: timeout=5
+  /change-password:
+    post:
+      summary: Change Password
+      tags:
+      - Authentication
+      operationId: ChangePassword
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: x-auth-token
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/ChangePasswordRequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /get-all-building:
+    get:
+      summary: GetAll Buildings
+      tags:
+      - Building
+      operationId: GetAllBuildings
+      deprecated: false
+      produces:
+      - application/json; charset=utf-8
+      parameters:
+      - name: limit
+        in: query
+        required: true
+        type: integer
+        format: int32
+        description: ''
+      - name: offset
+        in: query
+        required: true
+        type: integer
+        format: int32
+        description: ''
+      - name: sortBy
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: minRent
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: maxRent
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: minSize
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: maxSize
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: status
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: query
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: x-auth-token
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/GetAllBuildings'
+          examples:
+            application/json; charset=utf-8:
+              msg: Request Success
+              data:
+              - _id: 6402e32ba2d0c43019a7b9e6
+                name: Shubham Malla
+                location: Baroda
+                floorSize: 28000 sq.ft.
+                totalArea: 48000 sq.ft.
+                numberOfFloor: 9
+                status: Ready
+                track: null
+                pincode: 394101
+                micromarket:
+                - IT Hub
+                - Textiles
+                map: null
+                developer: null
+                createdAt: 2023-03-04T06:20:27.652Z
+                updatedAt: 2023-03-04T06:20:27.652Z
+              - _id: 6401d063e335c1963ddab7be
+                name: Shubham Malla
+                location: Baroda
+                floorSize: 28000 sq.ft.
+                totalArea: 48000 sq.ft.
+                numberOfFloor: 9
+                status: Ready
+                track: null
+                pincode: 394101
+                micromarket:
+                - IT Hub
+                - Textiles
+                createdAt: 2023-03-03T10:48:03.836Z
+                updatedAt: 2023-03-03T10:48:03.836Z
+              - _id: 64009d3ba144509193697fc2
+                name: Green Plaza
+                location: Surat
+                floorSize: 28000 sq.ft.
+                totalArea: 48000 sq.ft.
+                numberOfFloor: 9
+                status: Ready
+                track: null
+                pincode: 394101
+                micromarket:
+                - IT Hub
+                - Textiles
+                createdAt: 2023-03-02T12:57:31.784Z
+                updatedAt: 2023-03-02T12:57:31.784Z
+              - _id: 640079054ccbe6a67260b88d
+                name: Shubham Malla
+                location: Surat
+                floorSize: 28000 sq.ft.
+                totalArea: 48000 sq.ft.
+                numberOfFloor: 9
+                status: Ready
+                track: null
+                pincode: 394101
+                micromarket:
+                - IT Hub
+                - Textiles
+                createdAt: 2023-03-02T10:23:01.615Z
+                updatedAt: 2023-03-02T10:40:29.402Z
+              - _id: 64007755222600c77b2b4b9a
+                name: shubh Square
+                location: Surat
+                floorSize: 28000 sq.ft.
+                totalArea: 48000 sq.ft.
+                numberOfFloor: 9
+                status: Ready
+                track: null
+                pincode: 394101
+                micromarket:
+                - IT Hub
+                - Textiles
+                createdAt: 2023-03-02T10:15:49.633Z
+                updatedAt: 2023-03-02T10:15:49.633Z
+              - _id: 640076d76da995567b8a037c
+                name: shubh Square
+                location: Surat
+                floorSize: 28000 sq.ft.
+                totalArea: 48000 sq.ft.
+                numberOfFloor: 9
+                status: Ready
+                track: null
+                pincode: 394101
+                micromarket:
+                - IT Hub
+                - Textiles
+                createdAt: 2023-03-02T10:13:43.829Z
+                updatedAt: 2023-03-02T10:13:43.829Z
+              - _id: 640076c783f23ae2b46c1560
+                name: shubh Square
+                location: Surat
+                floorSize: 28000 sq.ft.
+                totalArea: 48000 sq.ft.
+                numberOfFloor: 9
+                status: Ready
+                track: null
+                pincode: 394101
+                micromarket:
+                - IT Hub
+                - Textiles
+                createdAt: 2023-03-02T10:13:27.302Z
+                updatedAt: 2023-03-02T10:13:27.302Z
+              - _id: 640076a583f23ae2b46c155e
+                name: shubh Square
+                location: Surat
+                floorSize: 28000 sq.ft.
+                totalArea: 48000 sq.ft.
+                numberOfFloor: 9
+                status: Ready
+                track: null
+                pincode: 394101
+                micromarket:
+                - IT Hub
+                - Textiles
+                createdAt: 2023-03-02T10:12:53.294Z
+                updatedAt: 2023-03-02T10:12:53.294Z
+              - _id: 64007696df63c9c269e92494
+                name: shubh Square
+                location: Surat
+                floorSize: 28000 sq.ft.
+                totalArea: 48000 sq.ft.
+                numberOfFloor: 9
+                status: Ready
+                track: null
+                pincode: 394101
+                micromarket:
+                - IT Hub
+                - Textiles
+                createdAt: 2023-03-02T10:12:38.420Z
+                updatedAt: 2023-03-02T10:12:38.420Z
+              - _id: 6400767adf63c9c269e92492
+                name: shubh Square
+                location: Surat
+                floorSize: 28000 sq.ft.
+                totalArea: 48000 sq.ft.
+                numberOfFloor: 9
+                status: Ready
+                track: null
+                pincode: 394101
+                micromarket:
+                - IT Hub
+                - Textiles
+                createdAt: 2023-03-02T10:12:10.796Z
+                updatedAt: 2023-03-02T10:12:10.796Z
+          headers:
+            X-Powered-By:
+              type: string
+              default: Express
+            Content-Length:
+              type: string
+              default: '3156'
+            ETag:
+              type: string
+              default: W/"c54-cG39ieU9xItN+flOQqODa0R9qQI"
+            Date:
+              type: string
+              default: Mon, 06 Mar 2023 10:00:44 GMT
+            Connection:
+              type: string
+              default: keep-alive
+            Keep-Alive:
+              type: string
+              default: timeout=5
+  /get-all-city:
+    get:
+      summary: City Data
+      tags:
+      - Building
+      operationId: CityData
+      deprecated: false
+      produces:
+      - application/json; charset=utf-8
+      parameters: []
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/GetAllBuildings'
+          examples:
+            application/json; charset=utf-8:
+              msg: Request Success
+              data:
+              - _id: 6402e32ba2d0c43019a7b9e6
+                name: Shubham Malla
+                location: Baroda
+                floorSize: 28000 sq.ft.
+                totalArea: 48000 sq.ft.
+                numberOfFloor: 9
+                status: Ready
+                track: null
+                pincode: 394101
+                micromarket:
+                - IT Hub
+                - Textiles
+                map: null
+                developer: null
+                createdAt: 2023-03-04T06:20:27.652Z
+                updatedAt: 2023-03-04T06:20:27.652Z
+              - _id: 6401d063e335c1963ddab7be
+                name: Shubham Malla
+                location: Baroda
+                floorSize: 28000 sq.ft.
+                totalArea: 48000 sq.ft.
+                numberOfFloor: 9
+                status: Ready
+                track: null
+                pincode: 394101
+                micromarket:
+                - IT Hub
+                - Textiles
+                createdAt: 2023-03-03T10:48:03.836Z
+                updatedAt: 2023-03-03T10:48:03.836Z
+              - _id: 64009d3ba144509193697fc2
+                name: Green Plaza
+                location: Surat
+                floorSize: 28000 sq.ft.
+                totalArea: 48000 sq.ft.
+                numberOfFloor: 9
+                status: Ready
+                track: null
+                pincode: 394101
+                micromarket:
+                - IT Hub
+                - Textiles
+                createdAt: 2023-03-02T12:57:31.784Z
+                updatedAt: 2023-03-02T12:57:31.784Z
+              - _id: 640079054ccbe6a67260b88d
+                name: Shubham Malla
+                location: Surat
+                floorSize: 28000 sq.ft.
+                totalArea: 48000 sq.ft.
+                numberOfFloor: 9
+                status: Ready
+                track: null
+                pincode: 394101
+                micromarket:
+                - IT Hub
+                - Textiles
+                createdAt: 2023-03-02T10:23:01.615Z
+                updatedAt: 2023-03-02T10:40:29.402Z
+              - _id: 64007755222600c77b2b4b9a
+                name: shubh Square
+                location: Surat
+                floorSize: 28000 sq.ft.
+                totalArea: 48000 sq.ft.
+                numberOfFloor: 9
+                status: Ready
+                track: null
+                pincode: 394101
+                micromarket:
+                - IT Hub
+                - Textiles
+                createdAt: 2023-03-02T10:15:49.633Z
+                updatedAt: 2023-03-02T10:15:49.633Z
+              - _id: 640076d76da995567b8a037c
+                name: shubh Square
+                location: Surat
+                floorSize: 28000 sq.ft.
+                totalArea: 48000 sq.ft.
+                numberOfFloor: 9
+                status: Ready
+                track: null
+                pincode: 394101
+                micromarket:
+                - IT Hub
+                - Textiles
+                createdAt: 2023-03-02T10:13:43.829Z
+                updatedAt: 2023-03-02T10:13:43.829Z
+              - _id: 640076c783f23ae2b46c1560
+                name: shubh Square
+                location: Surat
+                floorSize: 28000 sq.ft.
+                totalArea: 48000 sq.ft.
+                numberOfFloor: 9
+                status: Ready
+                track: null
+                pincode: 394101
+                micromarket:
+                - IT Hub
+                - Textiles
+                createdAt: 2023-03-02T10:13:27.302Z
+                updatedAt: 2023-03-02T10:13:27.302Z
+              - _id: 640076a583f23ae2b46c155e
+                name: shubh Square
+                location: Surat
+                floorSize: 28000 sq.ft.
+                totalArea: 48000 sq.ft.
+                numberOfFloor: 9
+                status: Ready
+                track: null
+                pincode: 394101
+                micromarket:
+                - IT Hub
+                - Textiles
+                createdAt: 2023-03-02T10:12:53.294Z
+                updatedAt: 2023-03-02T10:12:53.294Z
+              - _id: 64007696df63c9c269e92494
+                name: shubh Square
+                location: Surat
+                floorSize: 28000 sq.ft.
+                totalArea: 48000 sq.ft.
+                numberOfFloor: 9
+                status: Ready
+                track: null
+                pincode: 394101
+                micromarket:
+                - IT Hub
+                - Textiles
+                createdAt: 2023-03-02T10:12:38.420Z
+                updatedAt: 2023-03-02T10:12:38.420Z
+              - _id: 6400767adf63c9c269e92492
+                name: shubh Square
+                location: Surat
+                floorSize: 28000 sq.ft.
+                totalArea: 48000 sq.ft.
+                numberOfFloor: 9
+                status: Ready
+                track: null
+                pincode: 394101
+                micromarket:
+                - IT Hub
+                - Textiles
+                createdAt: 2023-03-02T10:12:10.796Z
+                updatedAt: 2023-03-02T10:12:10.796Z
+          headers:
+            X-Powered-By:
+              type: string
+              default: Express
+            Content-Length:
+              type: string
+              default: '3156'
+            ETag:
+              type: string
+              default: W/"c54-cG39ieU9xItN+flOQqODa0R9qQI"
+            Date:
+              type: string
+              default: Mon, 06 Mar 2023 10:00:44 GMT
+            Connection:
+              type: string
+              default: keep-alive
+            Keep-Alive:
+              type: string
+              default: timeout=5
+  /building-get-by-id/640eeeab26fdc0d55d88373d:
+    get:
+      summary: Building By Id
+      tags:
+      - Building
+      operationId: BuildingById
+      deprecated: false
+      produces:
+      - application/json; charset=utf-8
+      parameters:
+      - name: x-auth-token
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/BuildingById'
+          examples:
+            application/json; charset=utf-8:
+              msg: Request Success
+              data:
+                map: null
+                developer: null
+                _id: 64007657df63c9c269e92490
+                name: Shubham Malla
+                location: ABCD
+                floorSize: 28000 sq.ft.
+                totalArea: 48000 sq.ft.
+                numberOfFloor: 9
+                status: Ready
+                track: null
+                pincode: 394101
+                micromarket:
+                - IT Hub
+                - Textiles
+                createdAt: 2023-03-02T10:11:35.841Z
+                updatedAt: 2023-03-04T06:31:36.974Z
+                __v: 0
+          headers:
+            X-Powered-By:
+              type: string
+              default: Express
+            Content-Length:
+              type: string
+              default: '377'
+            ETag:
+              type: string
+              default: W/"179-IKVfOlYoQqrT20Nq4jFZteSZCHg"
+            Date:
+              type: string
+              default: Mon, 06 Mar 2023 10:00:58 GMT
+            Connection:
+              type: string
+              default: keep-alive
+            Keep-Alive:
+              type: string
+              default: timeout=5
+  /get-all-transaction:
+    get:
+      summary: Transection
+      tags:
+      - Building
+      operationId: Transection
+      deprecated: false
+      produces:
+      - application/json; charset=utf-8
+      parameters:
+      - name: page
+        in: query
+        required: true
+        type: integer
+        format: int32
+        description: ''
+      - name: limit
+        in: query
+        required: true
+        type: integer
+        format: int32
+        description: ''
+      - name: buildingId
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: x-auth-token
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Transection'
+          examples:
+            application/json; charset=utf-8:
+              msg: Request Success
+              data:
+                transaction:
+                - _id: 640eef0926fdc0d55d883740
+                  DocumentNo: 4389
+                  DocumentName: 36-A-Live Ad Licenses
+                  RegistrationDate: ''
+                  SROName: Co. D.N.Mumbai City 2
+                  SellerName: Swatimanish Joshi
+                  PurchaserName: Rohanprafullamunj
+                  PropertyDescription: 'Flat No: Room No 4, Floor No: Ground Floor, Building Name: Yashoda, Block No: Shivaji Park, Dadar West, Road No: Lady Jamshedji Road, Mumbai - 400028, Other Information: Total Duration 24 Months, Monthly Rent Rs. 23,000/- and deposit amount of Rs. 1,00,000/-, along with one four wheeler parking space'
+                  SROCode: 319
+                  Status: 4
+                  Address: 'Flat No: Room No 4, Floor No: Ground Floor, Building Name: Yashoda, Block No: Shivaji Park, Dadar West, Road No: Lady Jamshedji Road, Mumbai - 400028'
+                  BuildingName: Yashoda
+                  BlockNo: Shivaji Park
+                  PinCode: 400028
+                  Parking_Information: one four wheeler parking space
+                  Lock_In_Period: 24 Months
+                  Security_Deposit: 100000
+                  buildingId: 640eeeab26fdc0d55d88373d
+                - _id: 640eef0926fdc0d55d883741
+                  DocumentNo: 4340
+                  DocumentName: 36-A-Live Ad Licenses
+                  RegistrationDate: ''
+                  SROName: Co. D.N.Mumbai City 2
+                  SellerName: Joshi
+                  PurchaserName: Rohanprafullamunj
+                  PropertyDescription: 'Flat No: Room No 4, Floor No: Ground Floor, Building Name: Yashoda, Block No: Shivaji Park, Dadar West, Road No: Lady Jamshedji Road, Mumbai - 400028, Other Information: Total Duration 24 Months, Monthly Rent Rs. 23,000/- and deposit amount of Rs. 1,00,000/-, along with one four wheeler parking space'
+                  SROCode: 319
+                  Status: 4
+                  Address: 'Flat No: Room No 4, Floor No: Ground Floor, Building Name: Yashoda, Block No: Shivaji Park, Dadar West, Road No: Lady Jamshedji Road, Mumbai - 400028'
+                  BuildingName: Yashoda
+                  BlockNo: Shivaji Park
+                  PinCode: 400028
+                  Parking_Information: one four wheeler parking space
+                  Lock_In_Period: 24 Months
+                  Security_Deposit: 100000
+                  buildingId: 640eeeab26fdc0d55d88373d
+                - _id: 640eef0926fdc0d55d883742
+                  DocumentNo: 4341
+                  DocumentName: 36-A-Live Ad Licenses
+                  RegistrationDate: ''
+                  SROName: Co. D.N.Mumbai City 2
+                  SellerName: Swatimanish
+                  PurchaserName: Rohanprafullamunj
+                  PropertyDescription: 'Flat No: Room No 4, Floor No: Ground Floor, Building Name: Yashoda, Block No: Shivaji Park, Dadar West, Road No: Lady Jamshedji Road, Mumbai - 400028, Other Information: Total Duration 24 Months, Monthly Rent Rs. 23,000/- and deposit amount of Rs. 1,00,000/-, along with one four wheeler parking space'
+                  SROCode: 319
+                  Status: 4
+                  Address: 'Flat No: Room No 4, Floor No: Ground Floor, Building Name: Yashoda, Block No: Shivaji Park, Dadar West, Road No: Lady Jamshedji Road, Mumbai - 400028'
+                  BuildingName: Yashoda
+                  BlockNo: Shivaji Park
+                  PinCode: 400028
+                  Parking_Information: one four wheeler parking space
+                  Lock_In_Period: 24 Months
+                  Security_Deposit: 100000
+                  buildingId: 640eeeab26fdc0d55d88373d
+                pagination:
+                  offset: 1
+                  limit: 5
+                  total: 3
+          headers:
+            X-Powered-By:
+              type: string
+              default: Express
+            Access-Control-Allow-Origin:
+              type: string
+              default: '*'
+            Content-Length:
+              type: string
+              default: '2919'
+            ETag:
+              type: string
+              default: W/"b67-uVP5tffc0ahfwBnBAzG9rAL5RGg"
+            Date:
+              type: string
+              default: Tue, 14 Mar 2023 10:00:49 GMT
+            Connection:
+              type: string
+              default: keep-alive
+            Keep-Alive:
+              type: string
+              default: timeout=5
+  /get-allTransaction:
+    get:
+      summary: Transection All
+      tags:
+      - Building
+      operationId: TransectionAll
+      deprecated: false
+      produces:
+      - application/json; charset=utf-8
+      parameters:
+      - name: page
+        in: query
+        required: true
+        type: integer
+        format: int32
+        description: ''
+      - name: limit
+        in: query
+        required: true
+        type: integer
+        format: int32
+        description: ''
+      - name: minRent
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: maxRent
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: minSize
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: maxSize
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: str
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: startDate
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: endDate
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: x-auth-token
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Transection'
+          examples:
+            application/json; charset=utf-8:
+              msg: Request Success
+              data:
+                transaction:
+                - _id: 640eef0926fdc0d55d883740
+                  DocumentNo: 4389
+                  DocumentName: 36-A-Live Ad Licenses
+                  RegistrationDate: ''
+                  SROName: Co. D.N.Mumbai City 2
+                  SellerName: Swatimanish Joshi
+                  PurchaserName: Rohanprafullamunj
+                  PropertyDescription: 'Flat No: Room No 4, Floor No: Ground Floor, Building Name: Yashoda, Block No: Shivaji Park, Dadar West, Road No: Lady Jamshedji Road, Mumbai - 400028, Other Information: Total Duration 24 Months, Monthly Rent Rs. 23,000/- and deposit amount of Rs. 1,00,000/-, along with one four wheeler parking space'
+                  SROCode: 319
+                  Status: 4
+                  Address: 'Flat No: Room No 4, Floor No: Ground Floor, Building Name: Yashoda, Block No: Shivaji Park, Dadar West, Road No: Lady Jamshedji Road, Mumbai - 400028'
+                  BuildingName: Yashoda
+                  BlockNo: Shivaji Park
+                  PinCode: 400028
+                  Parking_Information: one four wheeler parking space
+                  Lock_In_Period: 24 Months
+                  Security_Deposit: 100000
+                  buildingId: 640eeeab26fdc0d55d88373d
+                - _id: 640eef0926fdc0d55d883741
+                  DocumentNo: 4340
+                  DocumentName: 36-A-Live Ad Licenses
+                  RegistrationDate: ''
+                  SROName: Co. D.N.Mumbai City 2
+                  SellerName: Joshi
+                  PurchaserName: Rohanprafullamunj
+                  PropertyDescription: 'Flat No: Room No 4, Floor No: Ground Floor, Building Name: Yashoda, Block No: Shivaji Park, Dadar West, Road No: Lady Jamshedji Road, Mumbai - 400028, Other Information: Total Duration 24 Months, Monthly Rent Rs. 23,000/- and deposit amount of Rs. 1,00,000/-, along with one four wheeler parking space'
+                  SROCode: 319
+                  Status: 4
+                  Address: 'Flat No: Room No 4, Floor No: Ground Floor, Building Name: Yashoda, Block No: Shivaji Park, Dadar West, Road No: Lady Jamshedji Road, Mumbai - 400028'
+                  BuildingName: Yashoda
+                  BlockNo: Shivaji Park
+                  PinCode: 400028
+                  Parking_Information: one four wheeler parking space
+                  Lock_In_Period: 24 Months
+                  Security_Deposit: 100000
+                  buildingId: 640eeeab26fdc0d55d88373d
+                - _id: 640eef0926fdc0d55d883742
+                  DocumentNo: 4341
+                  DocumentName: 36-A-Live Ad Licenses
+                  RegistrationDate: ''
+                  SROName: Co. D.N.Mumbai City 2
+                  SellerName: Swatimanish
+                  PurchaserName: Rohanprafullamunj
+                  PropertyDescription: 'Flat No: Room No 4, Floor No: Ground Floor, Building Name: Yashoda, Block No: Shivaji Park, Dadar West, Road No: Lady Jamshedji Road, Mumbai - 400028, Other Information: Total Duration 24 Months, Monthly Rent Rs. 23,000/- and deposit amount of Rs. 1,00,000/-, along with one four wheeler parking space'
+                  SROCode: 319
+                  Status: 4
+                  Address: 'Flat No: Room No 4, Floor No: Ground Floor, Building Name: Yashoda, Block No: Shivaji Park, Dadar West, Road No: Lady Jamshedji Road, Mumbai - 400028'
+                  BuildingName: Yashoda
+                  BlockNo: Shivaji Park
+                  PinCode: 400028
+                  Parking_Information: one four wheeler parking space
+                  Lock_In_Period: 24 Months
+                  Security_Deposit: 100000
+                  buildingId: 640eeeab26fdc0d55d88373d
+                pagination:
+                  offset: 1
+                  limit: 5
+                  total: 3
+          headers:
+            X-Powered-By:
+              type: string
+              default: Express
+            Access-Control-Allow-Origin:
+              type: string
+              default: '*'
+            Content-Length:
+              type: string
+              default: '2919'
+            ETag:
+              type: string
+              default: W/"b67-uVP5tffc0ahfwBnBAzG9rAL5RGg"
+            Date:
+              type: string
+              default: Tue, 14 Mar 2023 10:00:49 GMT
+            Connection:
+              type: string
+              default: keep-alive
+            Keep-Alive:
+              type: string
+              default: timeout=5
+  /get-by-id-transaction/641c2531085ee4ab6757d441:
+    get:
+      summary: Get By Id Transection
+      tags:
+      - Building
+      operationId: GetByIdTransection
+      deprecated: false
+      produces:
+      - application/json; charset=utf-8
+      parameters:
+      - name: x-auth-token
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/Transection'
+          examples:
+            application/json; charset=utf-8:
+              msg: Request Success
+              data:
+                transaction:
+                - _id: 640eef0926fdc0d55d883740
+                  DocumentNo: 4389
+                  DocumentName: 36-A-Live Ad Licenses
+                  RegistrationDate: ''
+                  SROName: Co. D.N.Mumbai City 2
+                  SellerName: Swatimanish Joshi
+                  PurchaserName: Rohanprafullamunj
+                  PropertyDescription: 'Flat No: Room No 4, Floor No: Ground Floor, Building Name: Yashoda, Block No: Shivaji Park, Dadar West, Road No: Lady Jamshedji Road, Mumbai - 400028, Other Information: Total Duration 24 Months, Monthly Rent Rs. 23,000/- and deposit amount of Rs. 1,00,000/-, along with one four wheeler parking space'
+                  SROCode: 319
+                  Status: 4
+                  Address: 'Flat No: Room No 4, Floor No: Ground Floor, Building Name: Yashoda, Block No: Shivaji Park, Dadar West, Road No: Lady Jamshedji Road, Mumbai - 400028'
+                  BuildingName: Yashoda
+                  BlockNo: Shivaji Park
+                  PinCode: 400028
+                  Parking_Information: one four wheeler parking space
+                  Lock_In_Period: 24 Months
+                  Security_Deposit: 100000
+                  buildingId: 640eeeab26fdc0d55d88373d
+                - _id: 640eef0926fdc0d55d883741
+                  DocumentNo: 4340
+                  DocumentName: 36-A-Live Ad Licenses
+                  RegistrationDate: ''
+                  SROName: Co. D.N.Mumbai City 2
+                  SellerName: Joshi
+                  PurchaserName: Rohanprafullamunj
+                  PropertyDescription: 'Flat No: Room No 4, Floor No: Ground Floor, Building Name: Yashoda, Block No: Shivaji Park, Dadar West, Road No: Lady Jamshedji Road, Mumbai - 400028, Other Information: Total Duration 24 Months, Monthly Rent Rs. 23,000/- and deposit amount of Rs. 1,00,000/-, along with one four wheeler parking space'
+                  SROCode: 319
+                  Status: 4
+                  Address: 'Flat No: Room No 4, Floor No: Ground Floor, Building Name: Yashoda, Block No: Shivaji Park, Dadar West, Road No: Lady Jamshedji Road, Mumbai - 400028'
+                  BuildingName: Yashoda
+                  BlockNo: Shivaji Park
+                  PinCode: 400028
+                  Parking_Information: one four wheeler parking space
+                  Lock_In_Period: 24 Months
+                  Security_Deposit: 100000
+                  buildingId: 640eeeab26fdc0d55d88373d
+                - _id: 640eef0926fdc0d55d883742
+                  DocumentNo: 4341
+                  DocumentName: 36-A-Live Ad Licenses
+                  RegistrationDate: ''
+                  SROName: Co. D.N.Mumbai City 2
+                  SellerName: Swatimanish
+                  PurchaserName: Rohanprafullamunj
+                  PropertyDescription: 'Flat No: Room No 4, Floor No: Ground Floor, Building Name: Yashoda, Block No: Shivaji Park, Dadar West, Road No: Lady Jamshedji Road, Mumbai - 400028, Other Information: Total Duration 24 Months, Monthly Rent Rs. 23,000/- and deposit amount of Rs. 1,00,000/-, along with one four wheeler parking space'
+                  SROCode: 319
+                  Status: 4
+                  Address: 'Flat No: Room No 4, Floor No: Ground Floor, Building Name: Yashoda, Block No: Shivaji Park, Dadar West, Road No: Lady Jamshedji Road, Mumbai - 400028'
+                  BuildingName: Yashoda
+                  BlockNo: Shivaji Park
+                  PinCode: 400028
+                  Parking_Information: one four wheeler parking space
+                  Lock_In_Period: 24 Months
+                  Security_Deposit: 100000
+                  buildingId: 640eeeab26fdc0d55d88373d
+                pagination:
+                  offset: 1
+                  limit: 5
+                  total: 3
+          headers:
+            X-Powered-By:
+              type: string
+              default: Express
+            Access-Control-Allow-Origin:
+              type: string
+              default: '*'
+            Content-Length:
+              type: string
+              default: '2919'
+            ETag:
+              type: string
+              default: W/"b67-uVP5tffc0ahfwBnBAzG9rAL5RGg"
+            Date:
+              type: string
+              default: Tue, 14 Mar 2023 10:00:49 GMT
+            Connection:
+              type: string
+              default: keep-alive
+            Keep-Alive:
+              type: string
+              default: timeout=5
+  /view-building:
+    post:
+      summary: View
+      tags:
+      - Building
+      operationId: View
+      deprecated: false
+      produces:
+      - application/json; charset=utf-8
+      parameters:
+      - name: x-auth-token
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/ViewRequest'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/View'
+          examples:
+            application/json; charset=utf-8:
+              msg: Successfully updated view
+          headers:
+            X-Powered-By:
+              type: string
+              default: Express
+            Access-Control-Allow-Origin:
+              type: string
+              default: '*'
+            Content-Length:
+              type: string
+              default: '35'
+            ETag:
+              type: string
+              default: W/"23-7VDR9zB0ssksdJKZQHy/1ZOpHS8"
+            Date:
+              type: string
+              default: Tue, 14 Mar 2023 09:58:34 GMT
+            Connection:
+              type: string
+              default: keep-alive
+            Keep-Alive:
+              type: string
+              default: timeout=5
+  /track-building:
+    post:
+      summary: Track
+      tags:
+      - Building
+      operationId: Track
+      deprecated: false
+      produces:
+      - application/json; charset=utf-8
+      parameters:
+      - name: x-auth-token
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/TrackRequest'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/View'
+          examples:
+            application/json; charset=utf-8:
+              msg: Successfully updated view
+          headers:
+            X-Powered-By:
+              type: string
+              default: Express
+            Access-Control-Allow-Origin:
+              type: string
+              default: '*'
+            Content-Length:
+              type: string
+              default: '35'
+            ETag:
+              type: string
+              default: W/"23-7VDR9zB0ssksdJKZQHy/1ZOpHS8"
+            Date:
+              type: string
+              default: Tue, 14 Mar 2023 09:58:34 GMT
+            Connection:
+              type: string
+              default: keep-alive
+            Keep-Alive:
+              type: string
+              default: timeout=5
+  /delete-building:
+    post:
+      summary: Delete Track
+      tags:
+      - Building
+      operationId: DeleteTrack
+      deprecated: false
+      produces:
+      - application/json; charset=utf-8
+      parameters:
+      - name: x-auth-token
+        in: header
+        required: true
+        type: string
+        description: ''
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/DeleteTrackRequest'
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/View'
+          examples:
+            application/json; charset=utf-8:
+              msg: Successfully updated view
+          headers:
+            X-Powered-By:
+              type: string
+              default: Express
+            Access-Control-Allow-Origin:
+              type: string
+              default: '*'
+            Content-Length:
+              type: string
+              default: '35'
+            ETag:
+              type: string
+              default: W/"23-7VDR9zB0ssksdJKZQHy/1ZOpHS8"
+            Date:
+              type: string
+              default: Tue, 14 Mar 2023 09:58:34 GMT
+            Connection:
+              type: string
+              default: keep-alive
+            Keep-Alive:
+              type: string
+              default: timeout=5
+  /get-track-list:
+    get:
+      summary: Get Track List
+      tags:
+      - Building
+      operationId: GetTrackList
+      deprecated: false
+      produces:
+      - application/json; charset=utf-8
+      parameters:
+      - name: limit
+        in: query
+        required: true
+        type: integer
+        format: int32
+        description: ''
+      - name: offset
+        in: query
+        required: true
+        type: integer
+        format: int32
+        description: ''
+      - name: sortBy
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: str
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: x-auth-token
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/View'
+          examples:
+            application/json; charset=utf-8:
+              msg: Successfully updated view
+          headers:
+            X-Powered-By:
+              type: string
+              default: Express
+            Access-Control-Allow-Origin:
+              type: string
+              default: '*'
+            Content-Length:
+              type: string
+              default: '35'
+            ETag:
+              type: string
+              default: W/"23-7VDR9zB0ssksdJKZQHy/1ZOpHS8"
+            Date:
+              type: string
+              default: Tue, 14 Mar 2023 09:58:34 GMT
+            Connection:
+              type: string
+              default: keep-alive
+            Keep-Alive:
+              type: string
+              default: timeout=5
+  /get-all-notification:
+    get:
+      summary: All Notification List By User
+      tags:
+      - Notification
+      operationId: AllNotificationListByUser
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: x-auth-token
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /read-notification/64140b564462b6bfade1a643:
+    get:
+      summary: Read Notification
+      tags:
+      - Notification
+      operationId: ReadNotification
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: x-auth-token
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /dashboard-view:
+    get:
+      summary: Dashboard View
+      tags:
+      - Dashboard
+      operationId: DashboardView
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: x-auth-token
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /get-square-feet/64131496345fd779c277f1fc:
+    get:
+      summary: Get Square Feet
+      tags:
+      - Analytics
+      operationId: GetSquareFeet
+      deprecated: false
+      produces:
+      - application/json; charset=utf-8
+      parameters:
+      - name: x-auth-token
+        in: header
+        required: true
+        type: string
+        description: ''
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/BuildingById'
+          examples:
+            application/json; charset=utf-8:
+              msg: Request Success
+              data:
+                map: null
+                developer: null
+                _id: 64007657df63c9c269e92490
+                name: Shubham Malla
+                location: ABCD
+                floorSize: 28000 sq.ft.
+                totalArea: 48000 sq.ft.
+                numberOfFloor: 9
+                status: Ready
+                track: null
+                pincode: 394101
+                micromarket:
+                - IT Hub
+                - Textiles
+                createdAt: 2023-03-02T10:11:35.841Z
+                updatedAt: 2023-03-04T06:31:36.974Z
+                __v: 0
+          headers:
+            X-Powered-By:
+              type: string
+              default: Express
+            Content-Length:
+              type: string
+              default: '377'
+            ETag:
+              type: string
+              default: W/"179-IKVfOlYoQqrT20Nq4jFZteSZCHg"
+            Date:
+              type: string
+              default: Mon, 06 Mar 2023 10:00:58 GMT
+            Connection:
+              type: string
+              default: keep-alive
+            Keep-Alive:
+              type: string
+              default: timeout=5
+definitions:
+  UserProfile:
+    title: UserProfile
+    example:
+      msg: Request Success
+      data:
+      - name: test
+        type: user
+        profilePicture: null
+        userId: 6405ade002f490fe8f52287c
+        userName: null
+        emailId: cejino@gmail.com
+        secondaryEmailId: null
+        registrationType: Email
+    type: object
+    properties:
+      msg:
+        type: string
+      data:
+        type: array
+        items:
+          $ref: '#/definitions/Datum'
+    required:
+    - msg
+    - data
+  Datum:
+    title: Datum
+    example:
+      name: test
+      type: user
+      profilePicture: null
+      userId: 6405ade002f490fe8f52287c
+      userName: null
+      emailId: cejino@gmail.com
+      secondaryEmailId: null
+      registrationType: Email
+    type: object
+    properties:
+      name:
+        type: string
+      type:
+        type: string
+      profilePicture:
+        type: string
+      userId:
+        type: string
+      userName:
+        type: string
+      emailId:
+        type: string
+      secondaryEmailId:
+        type: string
+      registrationType:
+        type: string
+    required:
+    - name
+    - type
+    - profilePicture
+    - userId
+    - userName
+    - emailId
+    - secondaryEmailId
+    - registrationType
+  UpdateProfileRequest:
+    title: UpdateProfileRequest
+    example:
+      name: test
+      company: InFutive
+      type: user
+      mobile: 9878767565
+      secondaryEmailId: infutive@gmail.com
+      city: 640af1ba302800ee956e73b2
+    type: object
+    properties:
+      name:
+        type: string
+      company:
+        type: string
+      type:
+        type: string
+      mobile:
+        type: integer
+        format: int64
+      secondaryEmailId:
+        type: string
+      city:
+        type: string
+    required:
+    - name
+    - company
+    - type
+    - mobile
+    - secondaryEmailId
+    - city
+  LoginRequest:
+    title: LoginRequest
+    example:
+      email: infutivedeveloper@gmail.com
+      password: Kumar@123
+    type: object
+    properties:
+      email:
+        type: string
+      password:
+        type: string
+    required:
+    - email
+    - password
+  Login:
+    title: Login
+    example:
+      msg: Successfully logged in.
+      data:
+        accessToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJNZXRhIiwiYXVkIjoiTWV0YSIsInVzZXJJZCI6IjYzZmRhZjhmZTkwMWI1YjMwMTBjOWM4ZiIsIm5hbWUiOiJ0ZXN0IiwidHlwZSI6IkFjY2VzcyIsImp0aSI6IjQ1NzdiNjgzNTlmODg4ZDgwYzdkIiwiaWF0IjoxNjc3NTgzMjUzLCJleHAiOjE2Nzc3NTYwNTN9.BRCm0sE0IvcpQzTmJA9GBpVAEZII48ofOBXjhSjsn6k
+        refreshToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJNZXRhIiwiYXVkIjoiTWV0YSIsInVzZXJJZCI6IjYzZmRhZjhmZTkwMWI1YjMwMTBjOWM4ZiIsIm5hbWUiOiJ0ZXN0IiwidHlwZSI6IlJlZnJlc2giLCJqdGkiOiJlNDBjNmZjNWE3YmFjZjU2NGE5NCIsImlhdCI6MTY3NzU4MzI1MywiZXhwIjoxNjc3NjY5NjUzfQ.hoK81QVHgvR1owowmmwx_IS_85gt9wFQ78Fxi3H-YNo
+        userData:
+          email:
+            verified: true
+    type: object
+    properties:
+      msg:
+        type: string
+      data:
+        $ref: '#/definitions/Data'
+    required:
+    - msg
+    - data
+  Data:
+    title: Data
+    example:
+      accessToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJNZXRhIiwiYXVkIjoiTWV0YSIsInVzZXJJZCI6IjYzZmRhZjhmZTkwMWI1YjMwMTBjOWM4ZiIsIm5hbWUiOiJ0ZXN0IiwidHlwZSI6IkFjY2VzcyIsImp0aSI6IjQ1NzdiNjgzNTlmODg4ZDgwYzdkIiwiaWF0IjoxNjc3NTgzMjUzLCJleHAiOjE2Nzc3NTYwNTN9.BRCm0sE0IvcpQzTmJA9GBpVAEZII48ofOBXjhSjsn6k
+      refreshToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJNZXRhIiwiYXVkIjoiTWV0YSIsInVzZXJJZCI6IjYzZmRhZjhmZTkwMWI1YjMwMTBjOWM4ZiIsIm5hbWUiOiJ0ZXN0IiwidHlwZSI6IlJlZnJlc2giLCJqdGkiOiJlNDBjNmZjNWE3YmFjZjU2NGE5NCIsImlhdCI6MTY3NzU4MzI1MywiZXhwIjoxNjc3NjY5NjUzfQ.hoK81QVHgvR1owowmmwx_IS_85gt9wFQ78Fxi3H-YNo
+      userData:
+        email:
+          verified: true
+    type: object
+    properties:
+      accessToken:
+        type: string
+      refreshToken:
+        type: string
+      userData:
+        $ref: '#/definitions/UserData'
+    required:
+    - accessToken
+    - refreshToken
+    - userData
+  UserData:
+    title: UserData
+    example:
+      email:
+        verified: true
+    type: object
+    properties:
+      email:
+        $ref: '#/definitions/Email'
+    required:
+    - email
+  Email:
+    title: Email
+    example:
+      verified: true
+    type: object
+    properties:
+      verified:
+        type: boolean
+    required:
+    - verified
+  RefreshToken:
+    title: RefreshToken
+    example:
+      msg: Successfully logged in.
+      data:
+        accessToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJNZXRhIiwiYXVkIjoiTWV0YSIsInVzZXJJZCI6IjYzZmRhZjhmZTkwMWI1YjMwMTBjOWM4ZiIsIm5hbWUiOiJ0ZXN0IiwidHlwZSI6IkFjY2VzcyIsImp0aSI6IjBiZjI0ZTI1NmI5ZGNkYWQwOWJkIiwiaWF0IjoxNjc3NTgzNjkyLCJleHAiOjE2Nzc3NTY0OTJ9.J8VtquAfbS9zs0yG-3sQd9bbEqBVeQ97SSXG2A9buxo
+        refreshToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJNZXRhIiwiYXVkIjoiTWV0YSIsInVzZXJJZCI6IjYzZmRhZjhmZTkwMWI1YjMwMTBjOWM4ZiIsIm5hbWUiOiJ0ZXN0IiwidHlwZSI6IlJlZnJlc2giLCJqdGkiOiI5MDc5Nzk2NDVkZDQ4MjkyZjUxZCIsImlhdCI6MTY3NzU4MzY5MiwiZXhwIjoxNjc3NjcwMDkyfQ.wKytf4N87G4WGpzCGQj2E8gY5gUt7vLjZ-BcgQ4_AWM
+    type: object
+    properties:
+      msg:
+        type: string
+      data:
+        $ref: '#/definitions/Data1'
+    required:
+    - msg
+    - data
+  Data1:
+    title: Data1
+    example:
+      accessToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJNZXRhIiwiYXVkIjoiTWV0YSIsInVzZXJJZCI6IjYzZmRhZjhmZTkwMWI1YjMwMTBjOWM4ZiIsIm5hbWUiOiJ0ZXN0IiwidHlwZSI6IkFjY2VzcyIsImp0aSI6IjBiZjI0ZTI1NmI5ZGNkYWQwOWJkIiwiaWF0IjoxNjc3NTgzNjkyLCJleHAiOjE2Nzc3NTY0OTJ9.J8VtquAfbS9zs0yG-3sQd9bbEqBVeQ97SSXG2A9buxo
+      refreshToken: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJNZXRhIiwiYXVkIjoiTWV0YSIsInVzZXJJZCI6IjYzZmRhZjhmZTkwMWI1YjMwMTBjOWM4ZiIsIm5hbWUiOiJ0ZXN0IiwidHlwZSI6IlJlZnJlc2giLCJqdGkiOiI5MDc5Nzk2NDVkZDQ4MjkyZjUxZCIsImlhdCI6MTY3NzU4MzY5MiwiZXhwIjoxNjc3NjcwMDkyfQ.wKytf4N87G4WGpzCGQj2E8gY5gUt7vLjZ-BcgQ4_AWM
+    type: object
+    properties:
+      accessToken:
+        type: string
+      refreshToken:
+        type: string
+    required:
+    - accessToken
+    - refreshToken
+  EmailVerifyRequest:
+    title: EmailVerifyRequest
+    example:
+      code: sfx0zs7U2qSr~oX
+    type: object
+    properties:
+      code:
+        type: string
+    required:
+    - code
+  EmailVerify:
+    title: EmailVerify
+    example:
+      msg: Your account has been verified, Please login.
+      data:
+        name: test
+        email: cejino1614a@gmail.com
+    type: object
+    properties:
+      msg:
+        type: string
+      data:
+        $ref: '#/definitions/Data2'
+    required:
+    - msg
+    - data
+  Data2:
+    title: Data2
+    example:
+      name: test
+      email: cejino1614a@gmail.com
+    type: object
+    properties:
+      name:
+        type: string
+      email:
+        type: string
+    required:
+    - name
+    - email
+  ForgotPasswordSendEmailRequest:
+    title: ForgotPasswordSendEmailRequest
+    example:
+      email: infutivedeveloper@gmail.com
+    type: object
+    properties:
+      email:
+        type: string
+    required:
+    - email
+  ForgotPasswordSendEmail:
+    title: ForgotPasswordSendEmail
+    example:
+      msg: Email sent to the registered account.
+    type: object
+    properties:
+      msg:
+        type: string
+    required:
+    - msg
+  ResetPassword(PasswordChange)Request:
+    title: ResetPassword(PasswordChange)Request
+    example:
+      code: 0pP~RFjpnfYuHFk
+      password: Developera@321
+    type: object
+    properties:
+      code:
+        type: string
+      password:
+        type: string
+    required:
+    - code
+    - password
+  SignUpRequest:
+    title: SignUpRequest
+    example:
+      name: test
+      email: infutivedeveloper@gmail.com
+      password: Kumar@321
+      city: Delhi
+      mobile: '9878767565'
+    type: object
+    properties:
+      name:
+        type: string
+      email:
+        type: string
+      password:
+        type: string
+      city:
+        type: string
+      mobile:
+        type: string
+    required:
+    - name
+    - email
+    - password
+    - city
+    - mobile
+  SignUp:
+    title: SignUp
+    example:
+      msg: Verification Email send successfully.
+      data:
+        _id: 63fdaf8fe901b5b3010c9c8f
+        name: test
+        email: cejino1614a@gmail.com
+    type: object
+    properties:
+      msg:
+        type: string
+      data:
+        $ref: '#/definitions/Data3'
+    required:
+    - msg
+    - data
+  Data3:
+    title: Data3
+    example:
+      _id: 63fdaf8fe901b5b3010c9c8f
+      name: test
+      email: cejino1614a@gmail.com
+    type: object
+    properties:
+      _id:
+        type: string
+      name:
+        type: string
+      email:
+        type: string
+    required:
+    - _id
+    - name
+    - email
+  ResendEmailRequest:
+    title: ResendEmailRequest
+    example:
+      email: infutivedeveloper@gmail.com
+    type: object
+    properties:
+      email:
+        type: string
+    required:
+    - email
+  ResendEmail:
+    title: ResendEmail
+    example:
+      msg: Verification Email send successfully.
+    type: object
+    properties:
+      msg:
+        type: string
+    required:
+    - msg
+  ChangePasswordRequest:
+    title: ChangePasswordRequest
+    example:
+      currentPassword: Developera@321
+      newPassword: Developera@123
+    type: object
+    properties:
+      currentPassword:
+        type: string
+      newPassword:
+        type: string
+    required:
+    - currentPassword
+    - newPassword
+  GetAllBuildings:
+    title: GetAllBuildings
+    example:
+      msg: Request Success
+      data:
+      - _id: 6402e32ba2d0c43019a7b9e6
+        name: Shubham Malla
+        location: Baroda
+        floorSize: 28000 sq.ft.
+        totalArea: 48000 sq.ft.
+        numberOfFloor: 9
+        status: Ready
+        track: null
+        pincode: 394101
+        micromarket:
+        - IT Hub
+        - Textiles
+        map: null
+        developer: null
+        createdAt: 2023-03-04T06:20:27.652Z
+        updatedAt: 2023-03-04T06:20:27.652Z
+      - _id: 6401d063e335c1963ddab7be
+        name: Shubham Malla
+        location: Baroda
+        floorSize: 28000 sq.ft.
+        totalArea: 48000 sq.ft.
+        numberOfFloor: 9
+        status: Ready
+        track: null
+        pincode: 394101
+        micromarket:
+        - IT Hub
+        - Textiles
+        createdAt: 2023-03-03T10:48:03.836Z
+        updatedAt: 2023-03-03T10:48:03.836Z
+      - _id: 64009d3ba144509193697fc2
+        name: Green Plaza
+        location: Surat
+        floorSize: 28000 sq.ft.
+        totalArea: 48000 sq.ft.
+        numberOfFloor: 9
+        status: Ready
+        track: null
+        pincode: 394101
+        micromarket:
+        - IT Hub
+        - Textiles
+        createdAt: 2023-03-02T12:57:31.784Z
+        updatedAt: 2023-03-02T12:57:31.784Z
+      - _id: 640079054ccbe6a67260b88d
+        name: Shubham Malla
+        location: Surat
+        floorSize: 28000 sq.ft.
+        totalArea: 48000 sq.ft.
+        numberOfFloor: 9
+        status: Ready
+        track: null
+        pincode: 394101
+        micromarket:
+        - IT Hub
+        - Textiles
+        createdAt: 2023-03-02T10:23:01.615Z
+        updatedAt: 2023-03-02T10:40:29.402Z
+      - _id: 64007755222600c77b2b4b9a
+        name: shubh Square
+        location: Surat
+        floorSize: 28000 sq.ft.
+        totalArea: 48000 sq.ft.
+        numberOfFloor: 9
+        status: Ready
+        track: null
+        pincode: 394101
+        micromarket:
+        - IT Hub
+        - Textiles
+        createdAt: 2023-03-02T10:15:49.633Z
+        updatedAt: 2023-03-02T10:15:49.633Z
+      - _id: 640076d76da995567b8a037c
+        name: shubh Square
+        location: Surat
+        floorSize: 28000 sq.ft.
+        totalArea: 48000 sq.ft.
+        numberOfFloor: 9
+        status: Ready
+        track: null
+        pincode: 394101
+        micromarket:
+        - IT Hub
+        - Textiles
+        createdAt: 2023-03-02T10:13:43.829Z
+        updatedAt: 2023-03-02T10:13:43.829Z
+      - _id: 640076c783f23ae2b46c1560
+        name: shubh Square
+        location: Surat
+        floorSize: 28000 sq.ft.
+        totalArea: 48000 sq.ft.
+        numberOfFloor: 9
+        status: Ready
+        track: null
+        pincode: 394101
+        micromarket:
+        - IT Hub
+        - Textiles
+        createdAt: 2023-03-02T10:13:27.302Z
+        updatedAt: 2023-03-02T10:13:27.302Z
+      - _id: 640076a583f23ae2b46c155e
+        name: shubh Square
+        location: Surat
+        floorSize: 28000 sq.ft.
+        totalArea: 48000 sq.ft.
+        numberOfFloor: 9
+        status: Ready
+        track: null
+        pincode: 394101
+        micromarket:
+        - IT Hub
+        - Textiles
+        createdAt: 2023-03-02T10:12:53.294Z
+        updatedAt: 2023-03-02T10:12:53.294Z
+      - _id: 64007696df63c9c269e92494
+        name: shubh Square
+        location: Surat
+        floorSize: 28000 sq.ft.
+        totalArea: 48000 sq.ft.
+        numberOfFloor: 9
+        status: Ready
+        track: null
+        pincode: 394101
+        micromarket:
+        - IT Hub
+        - Textiles
+        createdAt: 2023-03-02T10:12:38.420Z
+        updatedAt: 2023-03-02T10:12:38.420Z
+      - _id: 6400767adf63c9c269e92492
+        name: shubh Square
+        location: Surat
+        floorSize: 28000 sq.ft.
+        totalArea: 48000 sq.ft.
+        numberOfFloor: 9
+        status: Ready
+        track: null
+        pincode: 394101
+        micromarket:
+        - IT Hub
+        - Textiles
+        createdAt: 2023-03-02T10:12:10.796Z
+        updatedAt: 2023-03-02T10:12:10.796Z
+    type: object
+    properties:
+      msg:
+        type: string
+      data:
+        type: array
+        items:
+          $ref: '#/definitions/Data4'
+    required:
+    - msg
+    - data
+  Data4:
+    title: Data4
+    example:
+      _id: 6402e32ba2d0c43019a7b9e6
+      name: Shubham Malla
+      location: Baroda
+      floorSize: 28000 sq.ft.
+      totalArea: 48000 sq.ft.
+      numberOfFloor: 9
+      status: Ready
+      track: null
+      pincode: 394101
+      micromarket:
+      - IT Hub
+      - Textiles
+      map: null
+      developer: null
+      createdAt: 2023-03-04T06:20:27.652Z
+      updatedAt: 2023-03-04T06:20:27.652Z
+    type: object
+    properties:
+      _id:
+        type: string
+      name:
+        type: string
+      location:
+        type: string
+      floorSize:
+        type: string
+      totalArea:
+        type: string
+      numberOfFloor:
+        type: integer
+        format: int32
+      status:
+        type: string
+      track:
+        type: string
+      pincode:
+        type: integer
+        format: int32
+      micromarket:
+        type: array
+        items:
+          type: string
+      map:
+        type: string
+      developer:
+        type: string
+      createdAt:
+        type: string
+      updatedAt:
+        type: string
+    required:
+    - _id
+    - name
+    - location
+    - floorSize
+    - totalArea
+    - numberOfFloor
+    - status
+    - track
+    - pincode
+    - micromarket
+    - createdAt
+    - updatedAt
+  BuildingById:
+    title: BuildingById
+    example:
+      msg: Request Success
+      data:
+        map: null
+        developer: null
+        _id: 64007657df63c9c269e92490
+        name: Shubham Malla
+        location: ABCD
+        floorSize: 28000 sq.ft.
+        totalArea: 48000 sq.ft.
+        numberOfFloor: 9
+        status: Ready
+        track: null
+        pincode: 394101
+        micromarket:
+        - IT Hub
+        - Textiles
+        createdAt: 2023-03-02T10:11:35.841Z
+        updatedAt: 2023-03-04T06:31:36.974Z
+        __v: 0
+    type: object
+    properties:
+      msg:
+        type: string
+      data:
+        $ref: '#/definitions/Data6'
+    required:
+    - msg
+    - data
+  Data6:
+    title: Data6
+    example:
+      map: null
+      developer: null
+      _id: 64007657df63c9c269e92490
+      name: Shubham Malla
+      location: ABCD
+      floorSize: 28000 sq.ft.
+      totalArea: 48000 sq.ft.
+      numberOfFloor: 9
+      status: Ready
+      track: null
+      pincode: 394101
+      micromarket:
+      - IT Hub
+      - Textiles
+      createdAt: 2023-03-02T10:11:35.841Z
+      updatedAt: 2023-03-04T06:31:36.974Z
+      __v: 0
+    type: object
+    properties:
+      map:
+        type: string
+      developer:
+        type: string
+      _id:
+        type: string
+      name:
+        type: string
+      location:
+        type: string
+      floorSize:
+        type: string
+      totalArea:
+        type: string
+      numberOfFloor:
+        type: integer
+        format: int32
+      status:
+        type: string
+      track:
+        type: string
+      pincode:
+        type: integer
+        format: int32
+      micromarket:
+        type: array
+        items:
+          type: string
+      createdAt:
+        type: string
+      updatedAt:
+        type: string
+      __v:
+        type: integer
+        format: int32
+    required:
+    - map
+    - developer
+    - _id
+    - name
+    - location
+    - floorSize
+    - totalArea
+    - numberOfFloor
+    - status
+    - track
+    - pincode
+    - micromarket
+    - createdAt
+    - updatedAt
+    - __v
+  Transection:
+    title: Transection
+    example:
+      msg: Request Success
+      data:
+        transaction:
+        - _id: 640eef0926fdc0d55d883740
+          DocumentNo: 4389
+          DocumentName: 36-A-Live Ad Licenses
+          RegistrationDate: ''
+          SROName: Co. D.N.Mumbai City 2
+          SellerName: Swatimanish Joshi
+          PurchaserName: Rohanprafullamunj
+          PropertyDescription: 'Flat No: Room No 4, Floor No: Ground Floor, Building Name: Yashoda, Block No: Shivaji Park, Dadar West, Road No: Lady Jamshedji Road, Mumbai - 400028, Other Information: Total Duration 24 Months, Monthly Rent Rs. 23,000/- and deposit amount of Rs. 1,00,000/-, along with one four wheeler parking space'
+          SROCode: 319
+          Status: 4
+          Address: 'Flat No: Room No 4, Floor No: Ground Floor, Building Name: Yashoda, Block No: Shivaji Park, Dadar West, Road No: Lady Jamshedji Road, Mumbai - 400028'
+          BuildingName: Yashoda
+          BlockNo: Shivaji Park
+          PinCode: 400028
+          Parking_Information: one four wheeler parking space
+          Lock_In_Period: 24 Months
+          Security_Deposit: 100000
+          buildingId: 640eeeab26fdc0d55d88373d
+        - _id: 640eef0926fdc0d55d883741
+          DocumentNo: 4340
+          DocumentName: 36-A-Live Ad Licenses
+          RegistrationDate: ''
+          SROName: Co. D.N.Mumbai City 2
+          SellerName: Joshi
+          PurchaserName: Rohanprafullamunj
+          PropertyDescription: 'Flat No: Room No 4, Floor No: Ground Floor, Building Name: Yashoda, Block No: Shivaji Park, Dadar West, Road No: Lady Jamshedji Road, Mumbai - 400028, Other Information: Total Duration 24 Months, Monthly Rent Rs. 23,000/- and deposit amount of Rs. 1,00,000/-, along with one four wheeler parking space'
+          SROCode: 319
+          Status: 4
+          Address: 'Flat No: Room No 4, Floor No: Ground Floor, Building Name: Yashoda, Block No: Shivaji Park, Dadar West, Road No: Lady Jamshedji Road, Mumbai - 400028'
+          BuildingName: Yashoda
+          BlockNo: Shivaji Park
+          PinCode: 400028
+          Parking_Information: one four wheeler parking space
+          Lock_In_Period: 24 Months
+          Security_Deposit: 100000
+          buildingId: 640eeeab26fdc0d55d88373d
+        - _id: 640eef0926fdc0d55d883742
+          DocumentNo: 4341
+          DocumentName: 36-A-Live Ad Licenses
+          RegistrationDate: ''
+          SROName: Co. D.N.Mumbai City 2
+          SellerName: Swatimanish
+          PurchaserName: Rohanprafullamunj
+          PropertyDescription: 'Flat No: Room No 4, Floor No: Ground Floor, Building Name: Yashoda, Block No: Shivaji Park, Dadar West, Road No: Lady Jamshedji Road, Mumbai - 400028, Other Information: Total Duration 24 Months, Monthly Rent Rs. 23,000/- and deposit amount of Rs. 1,00,000/-, along with one four wheeler parking space'
+          SROCode: 319
+          Status: 4
+          Address: 'Flat No: Room No 4, Floor No: Ground Floor, Building Name: Yashoda, Block No: Shivaji Park, Dadar West, Road No: Lady Jamshedji Road, Mumbai - 400028'
+          BuildingName: Yashoda
+          BlockNo: Shivaji Park
+          PinCode: 400028
+          Parking_Information: one four wheeler parking space
+          Lock_In_Period: 24 Months
+          Security_Deposit: 100000
+          buildingId: 640eeeab26fdc0d55d88373d
+        pagination:
+          offset: 1
+          limit: 5
+          total: 3
+    type: object
+    properties:
+      msg:
+        type: string
+      data:
+        $ref: '#/definitions/Data7'
+    required:
+    - msg
+    - data
+  Data7:
+    title: Data7
+    example:
+      transaction:
+      - _id: 640eef0926fdc0d55d883740
+        DocumentNo: 4389
+        DocumentName: 36-A-Live Ad Licenses
+        RegistrationDate: ''
+        SROName: Co. D.N.Mumbai City 2
+        SellerName: Swatimanish Joshi
+        PurchaserName: Rohanprafullamunj
+        PropertyDescription: 'Flat No: Room No 4, Floor No: Ground Floor, Building Name: Yashoda, Block No: Shivaji Park, Dadar West, Road No: Lady Jamshedji Road, Mumbai - 400028, Other Information: Total Duration 24 Months, Monthly Rent Rs. 23,000/- and deposit amount of Rs. 1,00,000/-, along with one four wheeler parking space'
+        SROCode: 319
+        Status: 4
+        Address: 'Flat No: Room No 4, Floor No: Ground Floor, Building Name: Yashoda, Block No: Shivaji Park, Dadar West, Road No: Lady Jamshedji Road, Mumbai - 400028'
+        BuildingName: Yashoda
+        BlockNo: Shivaji Park
+        PinCode: 400028
+        Parking_Information: one four wheeler parking space
+        Lock_In_Period: 24 Months
+        Security_Deposit: 100000
+        buildingId: 640eeeab26fdc0d55d88373d
+      - _id: 640eef0926fdc0d55d883741
+        DocumentNo: 4340
+        DocumentName: 36-A-Live Ad Licenses
+        RegistrationDate: ''
+        SROName: Co. D.N.Mumbai City 2
+        SellerName: Joshi
+        PurchaserName: Rohanprafullamunj
+        PropertyDescription: 'Flat No: Room No 4, Floor No: Ground Floor, Building Name: Yashoda, Block No: Shivaji Park, Dadar West, Road No: Lady Jamshedji Road, Mumbai - 400028, Other Information: Total Duration 24 Months, Monthly Rent Rs. 23,000/- and deposit amount of Rs. 1,00,000/-, along with one four wheeler parking space'
+        SROCode: 319
+        Status: 4
+        Address: 'Flat No: Room No 4, Floor No: Ground Floor, Building Name: Yashoda, Block No: Shivaji Park, Dadar West, Road No: Lady Jamshedji Road, Mumbai - 400028'
+        BuildingName: Yashoda
+        BlockNo: Shivaji Park
+        PinCode: 400028
+        Parking_Information: one four wheeler parking space
+        Lock_In_Period: 24 Months
+        Security_Deposit: 100000
+        buildingId: 640eeeab26fdc0d55d88373d
+      - _id: 640eef0926fdc0d55d883742
+        DocumentNo: 4341
+        DocumentName: 36-A-Live Ad Licenses
+        RegistrationDate: ''
+        SROName: Co. D.N.Mumbai City 2
+        SellerName: Swatimanish
+        PurchaserName: Rohanprafullamunj
+        PropertyDescription: 'Flat No: Room No 4, Floor No: Ground Floor, Building Name: Yashoda, Block No: Shivaji Park, Dadar West, Road No: Lady Jamshedji Road, Mumbai - 400028, Other Information: Total Duration 24 Months, Monthly Rent Rs. 23,000/- and deposit amount of Rs. 1,00,000/-, along with one four wheeler parking space'
+        SROCode: 319
+        Status: 4
+        Address: 'Flat No: Room No 4, Floor No: Ground Floor, Building Name: Yashoda, Block No: Shivaji Park, Dadar West, Road No: Lady Jamshedji Road, Mumbai - 400028'
+        BuildingName: Yashoda
+        BlockNo: Shivaji Park
+        PinCode: 400028
+        Parking_Information: one four wheeler parking space
+        Lock_In_Period: 24 Months
+        Security_Deposit: 100000
+        buildingId: 640eeeab26fdc0d55d88373d
+      pagination:
+        offset: 1
+        limit: 5
+        total: 3
+    type: object
+    properties:
+      transaction:
+        type: array
+        items:
+          $ref: '#/definitions/Transaction'
+      pagination:
+        $ref: '#/definitions/Pagination'
+    required:
+    - transaction
+    - pagination
+  Transaction:
+    title: Transaction
+    example:
+      _id: 640eef0926fdc0d55d883740
+      DocumentNo: 4389
+      DocumentName: 36-A-Live Ad Licenses
+      RegistrationDate: ''
+      SROName: Co. D.N.Mumbai City 2
+      SellerName: Swatimanish Joshi
+      PurchaserName: Rohanprafullamunj
+      PropertyDescription: 'Flat No: Room No 4, Floor No: Ground Floor, Building Name: Yashoda, Block No: Shivaji Park, Dadar West, Road No: Lady Jamshedji Road, Mumbai - 400028, Other Information: Total Duration 24 Months, Monthly Rent Rs. 23,000/- and deposit amount of Rs. 1,00,000/-, along with one four wheeler parking space'
+      SROCode: 319
+      Status: 4
+      Address: 'Flat No: Room No 4, Floor No: Ground Floor, Building Name: Yashoda, Block No: Shivaji Park, Dadar West, Road No: Lady Jamshedji Road, Mumbai - 400028'
+      BuildingName: Yashoda
+      BlockNo: Shivaji Park
+      PinCode: 400028
+      Parking_Information: one four wheeler parking space
+      Lock_In_Period: 24 Months
+      Security_Deposit: 100000
+      buildingId: 640eeeab26fdc0d55d88373d
+    type: object
+    properties:
+      _id:
+        type: string
+      DocumentNo:
+        type: integer
+        format: int32
+      DocumentName:
+        type: string
+      RegistrationDate:
+        type: string
+      SROName:
+        type: string
+      SellerName:
+        type: string
+      PurchaserName:
+        type: string
+      PropertyDescription:
+        type: string
+      SROCode:
+        type: integer
+        format: int32
+      Status:
+        type: integer
+        format: int32
+      Address:
+        type: string
+      BuildingName:
+        type: string
+      BlockNo:
+        type: string
+      PinCode:
+        type: integer
+        format: int32
+      Parking_Information:
+        type: string
+      Lock_In_Period:
+        type: string
+      Security_Deposit:
+        type: integer
+        format: int32
+      buildingId:
+        type: string
+    required:
+    - _id
+    - DocumentNo
+    - DocumentName
+    - RegistrationDate
+    - SROName
+    - SellerName
+    - PurchaserName
+    - PropertyDescription
+    - SROCode
+    - Status
+    - Address
+    - BuildingName
+    - BlockNo
+    - PinCode
+    - Parking_Information
+    - Lock_In_Period
+    - Security_Deposit
+    - buildingId
+  Pagination:
+    title: Pagination
+    example:
+      offset: 1
+      limit: 5
+      total: 3
+    type: object
+    properties:
+      offset:
+        type: integer
+        format: int32
+      limit:
+        type: integer
+        format: int32
+      total:
+        type: integer
+        format: int32
+    required:
+    - offset
+    - limit
+    - total
+  ViewRequest:
+    title: ViewRequest
+    example:
+      buildingId: 641c17ca57a38c8ae30c419e
+    type: object
+    properties:
+      buildingId:
+        type: string
+    required:
+    - buildingId
+  View:
+    title: View
+    example:
+      msg: Successfully updated view
+    type: object
+    properties:
+      msg:
+        type: string
+    required:
+    - msg
+  TrackRequest:
+    title: TrackRequest
+    example:
+      buildingId: 640eeeab26fdc0d55d88373d
+    type: object
+    properties:
+      buildingId:
+        type: string
+    required:
+    - buildingId
+  DeleteTrackRequest:
+    title: DeleteTrackRequest
+    example:
+      buildingId: 640eeeab26fdc0d55d88373d
+    type: object
+    properties:
+      buildingId:
+        type: string
+    required:
+    - buildingId
+tags:
+- name: User
+- name: Authentication
+- name: Building
+- name: Notification
+- name: Dashboard
+- name: Analytics
